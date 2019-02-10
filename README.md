@@ -52,21 +52,20 @@ The exampleSite provides a sample config.toml for easy configuration!
 
     exampleSite
     ├── config.toml
-    ├── content
-    │   ├── projects
-    │   │   └── looney-tunes.md
-    │   └── about.md
-    └── static
-        └── img
-            ├── looney-tunes
-            │   ├── gallery
-            │   │   ├── bugs.jpg
-            │   │   ├── coyote.jpg
-            │   │   ├── king.jpg
-            │   └── everybody.jpg
-            ├── about-banner.jpg
-            ├── about-porky.jpg
-            └── logo.jpg
+    └── content
+        ├── logo.jpg
+        ├── about
+        │   ├── index.md
+        │   ├── banner.jpg
+        │   └── porky.jpg
+        └── projects
+            └── looney-tunes
+                ├── index.md
+                ├── banner.jpg
+                └── assets
+                    ├── bugs.jpg
+                    ├── coyote.jpg
+                    └── king.jpg
     ...
     
 You can test the theme out in the exampleSite by:

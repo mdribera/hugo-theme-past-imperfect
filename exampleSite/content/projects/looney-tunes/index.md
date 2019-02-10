@@ -67,9 +67,9 @@ Bugs Bunny: Okay then, doc. Have it your way. I'm safe.
 Click on one!
 
 {{< gallery>}}
-    {{< figure title="The rabbit, the legend." src="/img/looney-tunes/gallery/bugs.jpg" >}}
-    {{< figure title="See ya!" src="/img/looney-tunes/gallery/coyote.jpg" >}}
-    {{< figure title="A king we can all look up to!" src="/img/looney-tunes/gallery/king.jpg" >}}
+    {{< figure title="The rabbit, the legend." src="assets/bugs.jpg" >}}
+    {{< figure title="See ya!" src="assets/coyote.jpg" >}}
+    {{< figure title="A king we can all look up to!" src="assets/king.jpg" >}}
 {{< /gallery >}}
 
 {{< init-photoswipe >}}
