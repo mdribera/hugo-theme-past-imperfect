@@ -1,0 +1,81 @@
+baseURL = "http://exampleSite.com/"
+languageCode = "en-us"
+title = "Looney Tunes"
+author = "Bugs Bunny"
+theme = "past-imperfect"
+preserveTaxonomyNames = true
+paginate = 6
+googleAnalytics = "UA-xxxxxxxx"
+enableRobotsTXT = true
+canonifyURLs = true
+
+[permalinks]
+    project = "/projects/:title/"
+
+[params]
+    description          = "Looney Toons make a blog"
+    # Load custom CSS or JavaScript files. The variable is an array so that you
+    # can load multiple files if necessary. You can also load the standard theme
+    # files by adding the value, "default".
+    customCSS            = ["default"]
+    customJS             = ["default"]
+
+[params.sidebar]
+    header    = "Looney Tunes"
+    paragraph = "Bugs Bunny, the famous, Oscar-winning cartoon rabbit, hosts his first weekly television series, along with all his fellow Warner Brothers cartoon stars."
+
+[params.sidebar.pic]
+    # If your logo is an svg it should be placed in /content/logo.svg
+    src       = "/logo.jpg"
+    # Options are "circle" or "hex"
+    shape     = "circle"
+    alt       = "That's all folks!"
+
+[params.share]
+    twitter     = true
+    google      = false
+    facebook    = true
+    reddit      = false
+    linkedin    = true
+    stumbleupon = false
+    email       = true
+
+[[menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    url = "/projects/"
+    pre = "<i class='fa fa-code'></i>" # prepend a fontawesome icon
+    weight = 1
+
+[social]
+    email           = "tweety@exampleSite.com"
+    github          = "wileecoyote"
+    bitbucket       = ""
+    jsfiddle        = ""
+    codepen         = ""
+    foursquare      = ""
+    dribbble        = ""
+    deviantart      = ""
+    behance         = ""
+    flickr          = ""
+    instagram       = "daffy-duck"
+    youtube         = ""
+    vimeo           = ""
+    vine            = ""
+    medium          = ""
+    wordpress       = ""
+    tumblr          = ""
+    xing            = ""
+    linkedin        = "yosemitesam"
+    slideshare      = ""
+    stackoverflow   = "porky"
+    reddit          = ""
+    pinterest       = ""
+    googleplus      = ""
+    facebook        = ""
+    facebook_admin  = ""
+    twitter_domain  = ""
+    twitter         = "marvin"
+    lastfm          = ""
+    strava          = ""
+    keybase         = ""

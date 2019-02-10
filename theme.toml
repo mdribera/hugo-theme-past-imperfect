@@ -1,0 +1,34 @@
+name = "Past Imperfect"
+license = "MIT"
+description = "A portfolio theme for Hugo, the static site generator. Minimalist design is based on HTML5 UP's Future Imperfect."
+homepage = "https://github.com/mdribera/hugo-theme-past-imperfect"
+tags = [
+    "theme",
+    "past imperfect",
+    "future imperfect",
+    "html5 up",
+    "responsive",
+    "project",
+    "blog"
+]
+features = [
+    "html5",
+    "css3",
+    "responsive",
+    "webpack",
+    "ECMAScript",
+    "scss",
+    "sass",
+    "font awesome",
+    "photoswipe",
+    "masonry"
+]
+min_version = 0.43
+
+[author]
+    name = "Mark Ribera"
+    homepage = "https://markdribera.com"
+
+[original]
+    name = "Future Imperfect"
+    homepage = "http://html5up.net/future-imperfect"

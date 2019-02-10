@@ -1,0 +1,21 @@
+{{ define "title" }}
+{{ .Site.Title }}
+{{ end }}
+
+{{ define "scripts" }}
+<script src="/masonry.js"></script>
+{{ end }}
+
+{{ define "main" }}
+<div class="page-main">
+    <div class="project-list masonry-grid">
+        <div class="project-gutter-sizer"></div>
+
+        {{ $paginator := .Paginate (where .Data.Pages.ByPublishDate.Reverse "Type" "project") }}
+        {{ range .Paginator.Pages }}
+            {{ .Render "li" }}
+        {{ end }}
+    </div>
+    {{ partial "pagination" . }}
+</div>
+{{ end }}

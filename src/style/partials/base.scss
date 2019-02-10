@@ -1,0 +1,564 @@
+@import '../globals';
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  // fix for chrome bug on font awesome flickering on page load
+  animation-delay: .1s;
+  animation-duration: .1s;
+  animation-iteration-count: 1;
+  animation-name: fontfix;
+  animation-timing-function: linear;
+
+  background: $color-background;
+}
+
+@keyframes fontfix {
+  from { opacity: 1; }
+  to { opacity: 1; }
+}
+
+input,
+select,
+textarea {
+  color: $color-dark-gray;
+}
+
+body,
+input,
+select,
+textarea {
+  font-family: $font-sans-pro;
+  font-size: 12pt;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+body,
+input,
+select,
+textarea,
+b,
+strong {
+  color: $color-black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $color-text;
+  font-family: $font-raleway;
+  font-weight: 800;
+  letter-spacing: .25rem;
+  line-height: 1.65;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+
+  a {
+    border-bottom: 0;
+    color: inherit;
+  }
+}
+
+h2 {
+  font-size: 1.1rem;
+}
+
+h3 {
+  font-size: .9rem;
+}
+
+h4,
+h5,
+h6 {
+  font-size: .7rem;
+}
+
+p {
+  margin: 0 0 2rem;
+}
+
+header {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0;
+  }
+
+  p {
+    font-family: $font-raleway;
+    font-weight: 400;
+    letter-spacing: .15rem;
+  }
+}
+
+blockquote {
+  border-left: solid 4px $color-gray-30;
+  font-style: italic;
+  margin: 0 0 2rem;
+  padding: .5rem 0 .5rem 2rem;
+  quotes: none;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  &::before {
+    content: none;
+  }
+
+  &::after {
+    content: none;
+  }
+}
+
+pre,
+code {
+  font-family: $font-courier-new, $font-monospace;
+  font-size: .9rem;
+}
+
+pre {
+  display: table;
+  margin: 0 0 1rem;
+  table-layout: fixed;
+  width: 100%;
+
+  code {
+    display: block;
+    line-height: 1.75rem;
+    overflow-x: auto;
+    padding: 1rem 1.5rem;
+  }
+}
+
+code {
+  background: $color-monokai-background;
+  border: solid 1px $color-gray-30;
+  color: $color-monokai-foreground;
+  margin: 0 .1rem;
+  padding: .1rem .25rem;
+}
+
+a {
+  border-bottom: dotted 1px $color-gray-65;
+  color: inherit;
+  text-decoration: none;
+  transition: color .2s ease, border-bottom-color .2s ease, opacity .2s ease;
+
+  &::before,
+  &::after {
+    transition: color .2s ease;
+  }
+
+  &:hover {
+    border-bottom-color: transparent;
+    color: $color-primary;
+
+    &::before,
+    &::after {
+      color: $color-primary;
+    }
+  }
+}
+
+q {
+  quotes: none;
+
+  &::before {
+    content: none;
+  }
+
+  &::after {
+    content: none;
+  }
+}
+
+b,
+strong {
+  color: $color-text;
+  font-weight: 700;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+sub {
+  font-size: .8rem;
+  position: relative;
+  top: .5rem;
+}
+
+sup {
+  font-size: .8rem;
+  position: relative;
+  top: -.5rem;
+}
+
+dl {
+  margin: 0 0 2rem;
+
+  dt {
+    display: block;
+    font-weight: 700;
+    margin: 0 0 1rem;
+  }
+
+  dd {
+    margin-left: 2rem;
+  }
+}
+
+ol {
+  list-style: decimal;
+  margin: 0 0 2rem;
+  padding-left: 1.25rem;
+
+  li {
+    padding-left: .25rem;
+  }
+}
+
+ul {
+  list-style: disc;
+  margin: 0 0 2rem;
+  padding-left: 1rem;
+
+  li {
+    padding-left: .5rem;
+  }
+}
+
+form {
+  margin: 0 0 2rem;
+}
+
+label {
+  color: $color-text;
+  display: block;
+  font-size: .9rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0 0 2rem;
+  table-layout: fixed;
+  width: 100%;
+
+  td {
+    overflow: hidden;
+    padding: .75rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  th {
+    color: $color-text;
+    font-size: .9rem;
+    font-weight: 700;
+    padding: 0 .75rem .75rem;
+    text-align: left;
+  }
+
+  thead {
+    border-bottom: solid 2px $color-gray-30;
+  }
+
+  tfoot {
+    border-top: solid 2px $color-gray-30;
+  }
+
+  &.alt {
+    border-collapse: separate;
+
+    thead {
+      border-bottom: 0;
+    }
+
+    tfoot {
+      border-top: 0;
+    }
+
+    tr {
+      td {
+        border: solid 1px $color-gray-30;
+        border-left-width: 0;
+        border-top-width: 0;
+
+        &:first-child {
+          border-left-width: 1px;
+        }
+      }
+
+      &:first-child td {
+        border-top-width: 1px;
+      }
+    }
+  }
+
+  tbody tr {
+    border: solid 1px $color-gray-30;
+    border-left: 0;
+    border-right: 0;
+
+    &:nth-child(2n + 1) {
+      background-color: $color-gray-075;
+    }
+  }
+}
+
+article,
+aside,
+details,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+article,
+section {
+  &.special {
+    text-align: center;
+  }
+}
+
+* {
+  box-sizing: border-box;
+
+  &::before {
+    box-sizing: border-box;
+  }
+
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+hr {
+  border: 0;
+  border-bottom: solid 1px $color-gray-30;
+  margin: 2rem 0;
+
+  &.major {
+    margin: 3rem 0;
+  }
+}
+
+select,
+textarea {
+  background: $color-gray-075;
+  border: solid 1px $color-gray-30;
+  border-radius: 0;
+  display: block;
+  outline: 0;
+  text-decoration: none;
+  width: 100%;
+
+  &:invalid {
+    box-shadow: none;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+    box-shadow: inset 0 0 0 1px $color-primary;
+  }
+}
+
+select {
+  height: 2.75rem;
+  padding: 0 1rem;
+}
+
+textarea {
+  padding: .75rem 1rem;
+}
+
+[type='text'],
+[type='password'],
+[type='email'],
+[type='tel'] {
+  background: $color-gray-075;
+  border: solid 1px $color-gray-30;
+  border-radius: 0;
+  color: inherit;
+  display: block;
+  height: 2.75rem;
+  outline: 0;
+  padding: 0 1rem;
+  text-decoration: none;
+  width: 100%;
+
+  &:invalid {
+    box-shadow: none;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+    box-shadow: inset 0 0 0 1px $color-primary;
+  }
+}
+
+[type='checkbox'],
+[type='radio'] {
+  display: block;
+  float: left;
+  margin-right: -2rem;
+  opacity: 0;
+  width: 1rem;
+  z-index: $z-base - 1;
+
+  + label {
+    color: $color-dark-gray;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 400;
+    padding-left: 2.4rem;
+    padding-right: .75rem;
+    position: relative;
+    text-decoration: none;
+
+    &::before {
+      background: $color-gray-075;
+      border: solid 1px $color-gray-30;
+      content: '';
+      display: inline-block;
+      font-family: $font-awesome;
+      font-style: normal;
+      font-weight: normal;
+      height: 1.65rem;
+      left: 0;
+      line-height: 1.58125rem;
+      position: absolute;
+      text-align: center;
+      text-transform: none;
+      top: 0;
+      width: 1.65rem;
+    }
+  }
+
+  &:checked + label::before {
+    background: $color-text;
+    border-color: $color-text;
+    color: $color-white;
+    content: '\f00c';
+  }
+
+  &:focus + label::before {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 1px $color-primary;
+  }
+}
+
+[type='radio'] + label::before {
+  border-radius: 100%;
+}

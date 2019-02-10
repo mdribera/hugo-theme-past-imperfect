@@ -1,0 +1,25 @@
+{{ $pswp := false }}
+{{ with .Parent }}
+{{ $pswp = default true (.Get "pswp") }}
+{{ end }}
+
+{{ $original := .Page.Resources.GetMatch (.Get "src") }}
+
+{{ if $original }}
+<div class='figure-box{{ with .Get "class" }} {{ . }}{{ end }}'>
+    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        {{ if eq $pswp true }}
+        {{ $thumbSrc := ($original.Resize "600x").RelPermalink }}
+        <a href="{{ $original.RelPermalink }}"
+           itemprop="contentUrl"
+           data-size="{{ $original.Width }}x{{ $original.Height }}"
+           data-msrc="{{ $thumbSrc }}">
+            <img src="{{ $thumbSrc }}" alt="">
+        </a>
+        {{ else }}
+            {{ partial "image" . }}
+        {{ end }}
+        {{ with .Get "title" }}<figcaption>{{ . | safeHTML }}</figcaption>{{ end }}
+    </figure>
+</div>
+{{ end }}

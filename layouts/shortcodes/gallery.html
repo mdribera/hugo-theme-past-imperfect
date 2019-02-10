@@ -1,0 +1,4 @@
+{{ $pswp := default true (.Get "pswp") }}
+<div class="{{ if eq $pswp true }}pswp-gallery{{ end }} gallery" itemscope itemtype="http://schema.org/ImageGallery">
+  {{ .Inner }}
+</div>

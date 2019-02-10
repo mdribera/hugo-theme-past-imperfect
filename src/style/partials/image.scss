@@ -1,0 +1,103 @@
+.figure-box,
+.video {
+  padding-bottom: 1rem;
+  padding-top: .5rem;
+  text-align: right;
+
+  &.fit,
+  &.main {
+    display: block;
+    width: 100%;
+  }
+
+  &.fit {
+    margin: 0 0 1rem;
+  }
+
+  &.main {
+    margin: 0 0 3rem;
+  }
+
+  &.half {
+    max-width: 50%;
+  }
+
+  &.third {
+    max-width: 33%;
+  }
+
+  &.fourth {
+    max-width: 25%;
+  }
+
+  &.inline-left {
+    float: left;
+    padding-right: 1.5rem;
+  }
+
+  &.inline-right {
+    float: right;
+    padding-left: 1.5rem;
+  }
+
+  &.clear {
+    clear: both;
+  }
+
+  &.center {
+    clear: both;
+    display: block;
+    margin: auto;
+  }
+}
+
+.video {
+  height: 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  iframe {
+    border: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &.fit {
+    padding-bottom: 56.25%;
+  }
+
+  &.half {
+    padding-bottom: 28.13%;
+  }
+
+  &.third {
+    padding-bottom: 18.75%;
+  }
+
+  &.fourth {
+    padding-bottom: 14%;
+  }
+}
+
+.figure-box {
+  border: 0;
+  display: inline-block;
+  width: 100%;
+
+  figcaption {
+    border-top: 1px solid $color-gray-30;
+    color: $color-dark-gray;
+    display: inline-block;
+    font-size: .8rem;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+}

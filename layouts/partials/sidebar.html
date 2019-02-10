@@ -1,0 +1,32 @@
+<section id="sidebar" class="page-sidebar">
+    {{ $pic := .Site.Params.sidebar.pic }}
+    <a href="/" class="site-logo {{ $pic.shape }}">
+        {{ if eq (path.Ext $pic.src) ".svg" }}
+        {{ partial $pic.src . }}
+        {{ else }}
+        <img src="{{ $pic.src }}" alt="{{ $pic.alt }}" />
+        {{ end }}
+    </a>
+
+    <div class="site-title">
+        {{ with .Site.Params.sidebar }}
+        <h1>{{ .header }}</h1>
+        <p>{{ .paragraph | safeHTML }}</p>
+        {{ end }}
+    </div>
+
+    <nav class="site-nav">
+        <ul class="nav-items">
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+            <li class="{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{ end }}">
+                <a href="{{.URL}}">{{ .Pre }}<span>{{ .Name | title }}</span></a>
+            </li>
+            {{ end }}
+        </ul>
+    </nav>
+
+    <ul class="site-links">
+        {{ partial "social" . }}
+    </ul>
+</section>

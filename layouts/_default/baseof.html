@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+    <head>
+        <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+
+        <!--META-->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {{ .Hugo.Generator }}
+
+        {{ with .Params.author }}
+        <meta name="author" content="{{ . }}">
+        {{ end }}
+
+        {{ with .Description }}
+        <meta name="description" content="{{ . }}">
+        {{ else }}
+        {{ with .Site.Params.description }}
+        <meta name="description" content="{{ . }}">
+        {{ end }}
+        {{ end }}
+
+        <!--HUGO THINGS-->
+        {{ template "_internal/twitter_cards.html" . }}
+        {{ template "_internal/opengraph.html" . }}
+        {{ template "_internal/schema.html" . }}
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700,900|Source+Sans+Pro:400,700&amp;subset=latin-ext">
+
+        {{ if or (not (isset .Site.Params "customcss")) (in .Site.Params.customcss "default") }}
+        <link rel="stylesheet" href="/main.css">
+        {{ end }}
+
+        {{ range .Site.Params.customcss }}
+        {{ if ne . "default" }}
+        <link rel="stylesheet" href="{{ . }}" />
+        {{ end }}
+        {{ end }}
+
+        {{ if not (in (printf "%#v" .Site.BaseURL) "localhost") }}
+        {{ template "_internal/google_analytics.html" . }}
+        {{ end }}
+    </head>
+    <body class="is-loading">
+        <div class="page-wrapper">
+            {{ partial "sidebar.html" . }}
+
+            {{ block "main" . }}{{ end }}
+
+            {{ partial "footer.html" . }}
+        </div>
+
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x back-to-top"></a>
+
+        {{ if in .Site.Params.customjs "default" }}
+        <script src="/main.js"></script>
+        {{ end }}
+
+        {{ range .Site.Params.customjs }}
+        {{ if ne . "default" }}<script src="{{ . }}"></script>{{ end }}
+        {{ end }}
+
+        {{ block "scripts" . }}{{ end }}
+    </body>
+</html>

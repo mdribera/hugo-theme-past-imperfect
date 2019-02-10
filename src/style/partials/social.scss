@@ -1,0 +1,184 @@
+@import '../globals';
+
+.share-btn {
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 0 0 $color-black-20;
+  color: $color-white;
+  display: inline-block;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-white;
+  }
+
+  &:active {
+    box-shadow: none;
+    color: $color-light-gray;
+    outline: none;
+    position: relative;
+    top: 2px;
+  }
+
+  &.twitter {
+    background: $color-twitter;
+
+    &:hover {
+      background: $color-twitter-hover;
+    }
+  }
+
+  &.google-plus {
+    background: $color-googleplus;
+
+    &:hover {
+      background: $color-googleplus-hover;
+    }
+  }
+
+  &.facebook {
+    background: $color-facebook;
+
+    &:hover {
+      background: $color-facebook-hover;
+    }
+  }
+
+  &.linkedin {
+    background: $color-linkedin;
+
+    &:hover {
+      background: $color-linkedin;
+    }
+  }
+
+  &.stumbleupon {
+    background: $color-stumbleupon;
+
+    &:hover {
+      background: $color-stumbleupon-hover;
+    }
+  }
+
+  &.reddit {
+    background: $color-reddit;
+
+    &:hover {
+      background: $color-reddit-hover;
+    }
+  }
+
+  &.email {
+    background: $color-email;
+
+    &:hover {
+      background: $color-email-hover;
+    }
+  }
+}
+
+.site-links,
+.icons {
+  cursor: default;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+
+  li {
+    padding: 0 1rem 0 0;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    > * {
+      border: 0;
+      text-decoration: none;
+
+      &::before {
+        font-family: $font-awesome;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: normal;
+        text-transform: none;
+      }
+    }
+
+    .label {
+      display: none;
+    }
+  }
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+
+  li {
+    border: 0;
+    border-top: dotted 1px $color-gray-30;
+    margin: 1rem 0 0;
+    padding: 1rem 0 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  a {
+    display: block;
+  }
+
+  p {
+    font-family: $font-raleway;
+    font-size: .6rem;
+    font-weight: 400;
+    letter-spacing: .25rem;
+    margin-bottom: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
+
+.social-share {
+  margin-bottom: 1.5rem;
+  position: relative;
+  top: -.5rem;
+
+  ul {
+    margin: 0;
+
+    p {
+      display: none;
+    }
+  }
+
+  .share-btn {
+    padding: .5rem;
+    width: 4rem;
+  }
+
+  .icons li {
+    padding-right: .5rem;
+  }
+}
+
+.social-share-nav .share-btn h3 {
+  color: $color-white;
+}
+
+@include respond-to(small) {
+  .icons li>::before,
+  .site-links li>::before {
+    font-size: 1.6rem;
+  }
+}
+
+@include respond-to(xsmall) {
+  .social-share .share-btn {
+    width: 3rem;
+  }
+}

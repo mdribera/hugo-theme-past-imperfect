@@ -1,0 +1,92 @@
+@import '../globals';
+
+figure {
+  overflow: hidden;
+  position: relative;
+}
+
+figcaption p {
+  margin: auto;
+}
+
+.pswp-gallery {
+  margin: -10px -5px 10px;
+  overflow: hidden;
+
+  .figure-box {
+    float: left;
+    padding-bottom: 75%;
+    position: relative;
+  }
+
+  figure {
+    bottom: 5px;
+    left: 5px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+
+    p {
+      color: $color-white;
+      margin: 0;
+    }
+
+    > a {
+      border-bottom: 0;
+      display: block;
+      height: 100%;
+    }
+
+    &:hover figcaption {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+
+  figcaption {
+    background: $color-black-70;
+    bottom: -50%;
+    color: $color-white;
+    cursor: pointer;
+    left: 0;
+    opacity: 0;
+    padding: 5px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    transition: opacity .3s ease-in-out, bottom .3s ease-in-out;
+  }
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+@include larger-than(xsmall) {
+  .pswp-gallery .figure-box {
+    padding-bottom: 37.5%;
+    width: 50%;
+  }
+}
+
+@include larger-than(small) {
+  .pswp-gallery .figure-box {
+    padding-bottom: 25%;
+    width: 33.3%;
+  }
+}
+
+@include larger-than(xlarge) {
+  .pswp-gallery .figure-box {
+    padding-bottom: 15%;
+    width: 20%;
+  }
+}
+
+.pswp {
+  .pswp__caption__center {
+    text-align: center;
+  }
+}

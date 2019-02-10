@@ -1,0 +1,199 @@
+@import '../globals';
+
+.page-sidebar {
+  display: grid;
+  grid-template-areas: 'logo .' 'title title' 'nav nav' 'links links';
+  grid-template-columns: ($gutter-large * 2) 1fr;
+  grid-template-rows: auto auto 1fr auto;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  p {
+    @include soften-text(60);
+  }
+
+  .site-logo {
+    border-bottom: 0;
+    display: block;
+    grid-area: logo;
+    height: $gutter-large * 2;
+    overflow: hidden;
+    position: relative;
+    width: $gutter-large * 2;
+
+    img,
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+
+    &.circle {
+      img,
+      svg {
+        border-radius: 50%;
+      }
+    }
+
+    &.hex {
+      &::before {
+        background: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="none" zoomAndPan="disable"%3E%3Cpolygon points="0,0 100,0 100,25 50,0 0,25" style="fill:%23f4f4f4" /%3E%3Cpolygon points="0,100 100,100 100,75 50,100 0,75" style="fill:%23f4f4f4" /%3E%3C/svg%3E') no-repeat top left / 100% 100%;
+        content: '';
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .site-title {
+    font-family: $font-raleway;
+    font-weight: 400;
+    grid-area: title;
+    letter-spacing: .15em;
+    margin-bottom: $gutter-large;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin: 0;
+    }
+
+    p {
+      font-size: .8rem;
+      margin: 0;
+    }
+  }
+
+  .site-nav {
+    grid-area: nav;
+
+    li {
+      line-height: 1;
+      margin-top: .5rem;
+      padding-left: 1rem;
+      vertical-align: middle;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      a {
+        @include soften-text(65);
+        border-bottom: 0;
+        font-family: $font-raleway;
+        font-size: 1rem;
+        font-weight: 400;
+        letter-spacing: .25rem;
+        text-transform: uppercase;
+      }
+
+      &.active {
+        position: relative;
+
+        a {
+          font-weight: bold;
+
+          span {
+            border-bottom: dotted 1px $color-gray-65;
+          }
+
+          &:hover {
+            color: inherit;
+          }
+        }
+      }
+    }
+  }
+
+  .site-links {
+    align-self: end;
+    grid-area: links;
+
+    a {
+      display: block;
+      @include soften-text(60);
+    }
+  }
+}
+
+@include respond-to(medium) {
+  .page-sidebar {
+    grid-template-areas: 'logo . title title' '.  . nav links';
+    grid-template-columns: ($gutter-large * 2) $gutter-small 1fr 1fr;
+    margin: 0;
+
+    .site-title {
+      margin: 0;
+
+      p {
+        margin: 0;
+        width: 75%;
+      }
+    }
+
+    .nav-items {
+      flex-grow: 1;
+      margin: 0;
+
+      li {
+        border-left: solid 1px $color-gray-30;
+        display: inline-block;
+        margin-left: 1rem;
+        margin-top: 0;
+        padding-left: 1rem;
+
+        &:first-child {
+          border-left: 0;
+          margin-left: 0;
+          padding-left: 0;
+        }
+      }
+    }
+
+    .site-links {
+      display: flex;
+      flex-grow: 1;
+      justify-content: flex-end;
+    }
+  }
+}
+
+@include respond-to(small) {
+  .page-sidebar {
+    grid-template-areas: 'title' 'links' 'nav';
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+
+    .site-logo {
+      display: none;
+    }
+
+    .site-nav {
+      margin-top: $gutter-small;
+    }
+
+    .site-title {
+      h2 {
+        line-height: 1;
+      }
+
+      p {
+        display: none;
+      }
+    }
+
+    .site-links,
+    .site-nav,
+    .site-title {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}

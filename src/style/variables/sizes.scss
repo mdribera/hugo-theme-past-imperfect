@@ -1,0 +1,20 @@
+$gutter-large: 3rem;
+$gutter-small: 1.5rem;
+$gutter-xsmall: .75rem;
+
+$border-radius: .3rem;
+
+$sidebar-width: 19rem;
+
+$z-base: 0;
+$z-header: 100;
+$z-modal: 200;
+
+$breakpoints: (
+  xlarge: 1680px,
+  large: 1280px,
+  medium: 980px,
+  small: 768px,
+  xsmall: 480px,
+  xxsmall: 400px
+);

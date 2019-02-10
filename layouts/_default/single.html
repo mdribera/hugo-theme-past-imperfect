@@ -1,0 +1,38 @@
+{{ define "title" }}
+{{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+<div class="page-main content-single">
+    <article class="project">
+        {{ $.Scratch.Set "list" "false" }}
+        {{ partial "content-header" . }}
+
+        {{ if eq .Type "project" }}
+        <section class="social-share">
+            <ul class="icons">
+                {{ partial "share-links" . }}
+            </ul>
+        </section>
+        {{ end }}
+
+        <div class="project-content">
+            {{ .Content }}
+        </div>
+    </article>
+
+    {{ if eq .Type "project" }}
+    <ul class="actions pagination">
+        {{ if .NextInSection }}
+        <li><a href="{{ .NextInSection.Permalink }}" class="button big next">{{ .NextInSection.Title }}</a></li>
+        {{ end }}
+
+        <li><a href="/projects" class="button small">All Projects</a></li>
+
+        {{ if .PrevInSection }}
+        <li><a href="{{ .PrevInSection.Permalink }}" class="button big previous">{{ .PrevInSection.Title }}</a></li>
+        {{ end }}
+    </ul>
+    {{ end }}
+</div>
+{{ end }}

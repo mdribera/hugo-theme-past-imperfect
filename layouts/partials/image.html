@@ -1,0 +1,49 @@
+{{ $original := .Page.Resources.GetMatch (.Get "src") }}
+
+{{ $title := .Get "title" }}
+{{ $class := .Get "class" }}
+
+{{ if $original }}
+    {{ if eq $original.MediaType.SubType "svg" }}
+        {{ $original.Content | safeHTML }}
+    {{ else if eq $original.MediaType.MainType "video" }}
+    <video controls>
+      <source src="{{ $original.RelPermalink }}" type="{{ $original.MediaType }}">
+      Your browser does not support the video tag.
+    </video>
+    {{ else }}
+        {{ $srcset := "" }}
+
+        {{ $sizes := slice 320 480 768 1024 1280 1600 1920 }}
+        {{ range $sizes }}
+            {{ if gt $original.Width . }}
+                {{ $newSize := printf "%sx" (string .) }}
+                {{ $newLink := ($original.Resize $newSize).RelPermalink }}
+                {{ $newWidth := printf " %sw, " (string .) }}
+                {{ $srcset = print $srcset (print $newLink (print $newWidth)) }}
+            {{ end }}
+        {{ end }}
+
+        {{ $originalLink := printf "%s" $original.RelPermalink }}
+        {{ $originalWidth := printf " %sw" (string $original.Width) }}
+
+        {{ $srcset = print $srcset (print $originalLink (print $originalWidth)) }}
+
+        {{ $mediaQuery := "(min-width: 980px) calc(100vw - 34em), calc(100vw - 3rem)" }}
+        {{ if in $class "half" }}
+            {{ $mediaQuery = "(min-width: 980px) calc((100vw - 34em) / 2), calc((100vw - 6rem) / 2)" }}
+        {{ else if in $class "third" }}
+            {{ $mediaQuery = "(min-width: 980px) calc((100vw - 34em) / 3), calc((100vw - 6rem) / 3)" }}
+        {{ else if in $class "fourth" }}
+            {{ $mediaQuery = "(min-width: 980px) calc((100vw - 34em) / 4), calc((100vw - 6rem) / 4)" }}
+        {{ end }}
+
+    <img src="{{ $original.RelPermalink }}"
+         {{ if gt (len $srcset) 0 }}srcset="{{ printf $srcset }}"
+         sizes="{{ $mediaQuery }}"{{ end }}
+         {{ if $title }}alt="{{ $title }}"{{ end }}>
+    {{ end }}
+{{ else }}
+    {{ $src := .Get "src" }}
+    <img src="{{ $src  }}" {{ if $title }}alt="{{ $title }}"{{ end }}>
+{{ end }}
