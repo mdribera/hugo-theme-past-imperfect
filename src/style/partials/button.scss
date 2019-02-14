@@ -142,7 +142,6 @@ button,
 @include respond-to(small) {
   .actions {
     flex-direction: column;
-    margin-top: $gutter-small;
 
     li {
       margin: 1rem 0 0;
