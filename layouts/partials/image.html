@@ -31,11 +31,11 @@
 
         {{ $mediaQuery := "(min-width: 980px) calc(100vw - 34em), calc(100vw - 3rem)" }}
         {{ if in $class "half" }}
-            {{ $mediaQuery = "(min-width: 980px) calc((100vw - 34em) / 2), calc((100vw - 6rem) / 2)" }}
+            {{ $mediaQuery = "(min-width: 980px) calc((100vw - 34em) / 2), (min-width: 600px) calc((100vw - 6rem) / 2), 100vw" }}
         {{ else if in $class "third" }}
-            {{ $mediaQuery = "(min-width: 980px) calc((100vw - 34em) / 3), calc((100vw - 6rem) / 3)" }}
+            {{ $mediaQuery = "(min-width: 980px) calc((100vw - 34em) / 3), calc((100vw - 6rem) / 2)" }}
         {{ else if in $class "fourth" }}
-            {{ $mediaQuery = "(min-width: 980px) calc((100vw - 34em) / 4), calc((100vw - 6rem) / 4)" }}
+            {{ $mediaQuery = "(min-width: 980px) calc((100vw - 34em) / 4), calc((100vw - 6rem) / 2)" }}
         {{ end }}
 
     <img src="{{ $original.RelPermalink }}"

@@ -40,15 +40,21 @@
         {{ end }}
     </div>
 
-    {{ if and (eq .Type "project") (not .Params.wip) }}
+    {{ if eq .Type "project" }}
     <div class="meta">
         <time class="published" datetime='{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
             {{ .PublishDate.Format "January 2, 2006" }}
         </time>
         <p class="reading-time">{{ .ReadingTime }} minute read</p>
     </div>
+
+    <div class="meta abbreviated">
+        <time class="published" datetime='{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
+            {{ .PublishDate.Format "Jan 2, 2006" }}
+        </time>
+        <p class="reading-time">{{ .ReadingTime }} min read</p>
+    </div>
     {{ end }}
-    {{ if not .Params.wip }}
+
     <a class="project-link" href="{{ .Permalink }}"></a>
-    {{ end }}
 </header>

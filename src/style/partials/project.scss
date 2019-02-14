@@ -36,7 +36,11 @@
   border: solid 1px $color-gray-30;
   border-radius: $border-radius;
   max-width: 100%;
-  padding: $gutter-large;
+  padding: $gutter-small;
+
+  @include larger-than(medium) {
+    padding: $gutter-large;
+  }
 
   h2 {
     background-image: linear-gradient(to right, $color-secondary, $color-secondary);
@@ -56,42 +60,6 @@
   h3,
   h4 {
     @include soften-text(87);
-  }
-}
-
-.stats {
-  @include soften-text(70);
-  cursor: default;
-  list-style: none;
-  padding: 0;
-
-  li {
-    border-right: solid 1px $color-gray-30;
-    display: inline-block;
-    font-family: $font-raleway;
-    font-size: .6em;
-    font-weight: 400;
-    letter-spacing: .25em;
-    line-height: 1;
-    margin: 0 2rem 0 0;
-    padding: 0 2rem 0 0;
-    text-transform: uppercase;
-
-    &:last-child {
-      border-right: 0;
-      margin-right: 0;
-      padding-right: 0;
-    }
-
-  }
-
-  .icon {
-    border-bottom: 0;
-
-    &::before {
-      color: $color-gray-30;
-      margin-right: .75rem;
-    }
   }
 }
 
@@ -124,13 +92,18 @@
   border-top-right-radius: $border-radius;
   display: flex;
   flex-direction: column;
-  margin: calc(-#{$gutter-large} - 1px) calc(-#{$gutter-large} - 1px) 2rem;
+  margin: calc(-#{$gutter-small} - 1px) calc(-#{$gutter-small} - 1px) $gutter-small;
   overflow: hidden;
   position: relative;
+
+  @include larger-than(medium) {
+    margin: calc(-#{$gutter-large} - 1px) calc(-#{$gutter-large} - 1px) 2rem;
+  }
 
   .title,
   .meta {
     background-color: $color-black-50;
+    padding: ($gutter-small + .5rem) $gutter-small $gutter-small;
     z-index: $z-base + 1;
 
     p,
@@ -141,8 +114,11 @@
 
   .title {
     flex-grow: 1;
-    padding: $gutter-large $gutter-large $gutter-small;
     text-align: center;
+
+    @include larger-than(medium) {
+      padding: $gutter-large $gutter-large $gutter-small;
+    }
 
     h1 {
       font-size: 1.5rem;
@@ -164,21 +140,33 @@
   }
 
   .meta {
-    display: flex;
+    display: none;
     flex-direction: row;
     font-family: $font-raleway;
     font-size: .7rem;
     font-weight: 800;
     justify-content: center;
     letter-spacing: .25rem;
+    padding-top: 0;
     margin: 0;
-    padding: 0 $gutter-large $gutter-large;
     text-transform: uppercase;
     white-space: nowrap;
     width: 100%;
 
-    p {
-      margin: 0;
+    @include larger-than(medium) {
+      padding: 0 $gutter-large $gutter-large;
+    }
+
+    &.abbreviated {
+      display: flex;
+    }
+
+    @include larger-than(xxsmall) {
+      display: flex;
+
+      &.abbreviated {
+        display: none;
+      }
     }
 
     .reading-time,
@@ -194,9 +182,9 @@
     }
 
     .published {
-      margin: 0;
       text-align: right;
     }
+
   }
 
   .banner {
@@ -258,85 +246,34 @@
   }
 }
 
-@include respond-to(medium) {
-  .project {
-    padding: $gutter-small;
-  }
-
-  .project-header {
-    margin: calc(-#{$gutter-small} - 1px) calc(-#{$gutter-small} - 1px) $gutter-small;
-
-    .title,
-    .meta {
-      padding: ($gutter-small + .25rem) $gutter-small $gutter-small;
-    }
-
-    .meta {
-      padding-top: 0;
-    }
-
-    h1,
-    h2 {
-      font-size: 1.1rem;
-    }
-  }
-}
-
-@include respond-to(xsmall) {
-  .project-footer {
-    align-items: stretch;
-    flex-direction: column-reverse;
-
-    .stats {
-      text-align: center;
-
-      li {
-        margin: 0 1.25rem 0 0;
-        padding: 0 1.25rem 0 0;
-      }
-    }
-  }
-}
-
-@include respond-to(xxsmall) {
-  .page-sidebar .site-title h2 {
-    font-size: 1.6em;
-  }
-
-  .project-list .project-header,
-  .project-header {
-    .reading-time {
-      display: none;
-    }
-
-    .published {
-      padding: 0;
-      text-align: center;
-      width: 100%;
-    }
-  }
-}
-
 @include larger-than(small) {
   .content-single {
+    .project {
+      padding: $gutter-large;
+    }
+
     .project-header {
       flex-direction: row;
+      margin: calc(-#{$gutter-large} - 1px) calc(-#{$gutter-large} - 1px) 2rem;
 
       .title,
       .meta {
-        padding: $gutter-small;
+        padding: $gutter-large $gutter-large 2rem;
       }
 
       .title {
         text-align: left;
+
+        h1 {
+          font-size: 2rem;
+        }
       }
 
       .meta {
         flex-direction: column;
         justify-content: flex-start;
-        min-width: 16rem;
         padding-left: 0;
-        width: 16rem;
+        width: auto;
       }
 
       .published,
@@ -356,14 +293,51 @@
 
 @include larger-than(medium) {
   .content-single {
+    .project {
+      padding: $gutter-small;
+    }
+
     .project-header {
+      margin: calc(-#{$gutter-small} - 1px) calc(-#{$gutter-small} - 1px) $gutter-small;
+
       .title,
       .meta {
-        padding: $gutter-large;
+        padding: $gutter-large $gutter-small 2rem;
       }
 
       .meta {
+        display: none;
         padding-left: 0;
+
+        &.abbreviated {
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
+@include larger-than(large) {
+  .content-single {
+    .project {
+      padding: $gutter-large;
+    }
+
+    .project-header {
+      margin: calc(-#{$gutter-large} - 1px) calc(-#{$gutter-large} - 1px) 2rem;
+
+      .title,
+      .meta {
+        padding: $gutter-large $gutter-large 2rem;
+      }
+
+      .meta {
+        display: flex;
+        padding-left: 0;
+
+        &.abbreviated {
+          display: none;
+        }
       }
     }
   }
