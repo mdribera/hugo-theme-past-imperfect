@@ -2,12 +2,13 @@
 title: "{{ .Name | humanize }}"
 description: "This is the project archetype description."
 date: {{ .Date }}
-tags : [ "hugo", "past-imperfect"]
-categories : [ "dev", "go", "webpack" ]
+author: ""
+categories: ["dev", "go", "webpack"]
+tags: ["hugo", "past imperfect"]
 images: []
 video: []
-draft: true
 type: "project"
+draft: true
 ---
 
 A summary section to give your project an intro!

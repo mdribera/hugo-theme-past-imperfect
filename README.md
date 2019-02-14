@@ -40,7 +40,7 @@ Follow the [quick start instructions](https://gohugo.io/getting-started/quick-st
     
     - Or copy the config from exampleSite: `cp themes/past-imperfect/exampleSite/config.toml config.toml`
 
-6. Write something! `hugo new projects/my-first-project.md`
+6. Write something! `hugo new --kind project-bundle projects/my-cool-new-thing`
 
 7. Check it out at [localhost:1313](localhost:1313) by running: `hugo server`
 
