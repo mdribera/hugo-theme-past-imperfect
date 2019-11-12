@@ -6,7 +6,7 @@
         <!--META-->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {{ .Hugo.Generator }}
+        {{ hugo.Generator }}
 
         {{ with .Params.author }}
         <meta name="author" content="{{ . }}">
@@ -36,6 +36,12 @@
         <link rel="stylesheet" href="{{ . }}" />
         {{ end }}
         {{ end }}
+
+        {{ with .Site.Params.manifest }}
+        <link rel="manifest" href="{{ . }}">
+        {{- end }}
+
+        {{ partial "favicon.html" . }}
 
         {{ if not (in (printf "%#v" .Site.BaseURL) "localhost") }}
         {{ template "_internal/google_analytics.html" . }}

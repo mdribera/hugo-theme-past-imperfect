@@ -139,7 +139,7 @@ button,
   }
 }
 
-@include respond-to(small) {
+@include smaller-than(small) {
   .actions {
     flex-direction: column;
 
@@ -169,7 +169,7 @@ button,
   }
 }
 
-@include respond-to(xsmall) {
+@include smaller-than(xsmall) {
   .actions {
     li {
       width: 100%;

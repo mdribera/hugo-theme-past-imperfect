@@ -1,10 +1,10 @@
 <section id="sidebar" class="page-sidebar">
-    {{ $pic := .Site.Params.sidebar.pic }}
-    <a href="/" class="site-logo {{ $pic.shape }}">
-        {{ if eq (path.Ext $pic.src) ".svg" }}
-        {{ partial $pic.src . }}
+    {{ $logo := .Site.Params.sidebar.logo }}
+    <a href="/" class="site-logo {{ $logo.shape }}">
+        {{ if eq (path.Ext $logo.src) ".svg" }}
+        {{ readFile $logo.src | safeHTML }}
         {{ else }}
-        <img src="{{ $pic.src }}" alt="{{ $pic.alt }}" />
+        <img src="{{ $logo.src }}" alt="{{ $logo.alt }}" />
         {{ end }}
     </a>
 

@@ -170,14 +170,14 @@
   color: $color-white;
 }
 
-@include respond-to(small) {
+@include smaller-than(small) {
   .icons li>::before,
   .site-links li>::before {
     font-size: 1.6rem;
   }
 }
 
-@include respond-to(xsmall) {
+@include smaller-than(xsmall) {
   .social-share .share-btn {
     width: 3rem;
   }

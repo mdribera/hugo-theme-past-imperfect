@@ -9,14 +9,66 @@ figcaption p {
   margin: auto;
 }
 
+.pswp {
+  .pswp__caption__center {
+    text-align: center;
+  }
+}
+
 .pswp-gallery {
   margin: -10px -5px 10px;
   overflow: hidden;
 
   .figure-box {
-    float: left;
     padding-bottom: 75%;
     position: relative;
+
+    &.half,
+    &.third {
+      margin: 0;
+    }
+
+    &.half {
+      @include between(xsmall, medium) {
+        width: 50%;
+        padding-bottom: 37.5%;
+      }
+
+      @include larger-than(large) {
+        width: 50%;
+        padding-bottom: 37.5%;
+      }
+    }
+
+    &.third {
+      @include between(xxsmall, xsmall) {
+        &:not(:nth-child(3n-2)) {
+          padding-bottom: 37.5%;
+        }
+      }
+
+      @include between(xsmall, medium) {
+        padding-bottom: 25%;
+
+        &:not(:nth-child(3n-2)) {
+          padding-bottom: 25%;
+        }
+      }
+
+      @include between(medium, large) {
+        &:not(:nth-child(3n-2)) {
+          padding-bottom: 37.5%;
+        }
+      }
+
+      @include between(large, xlarge) {
+        padding-bottom: 25%;
+      }
+
+      @include larger-than(xlarge) {
+        padding-bottom: 15%;
+      }
+    }
   }
 
   figure {
@@ -61,32 +113,5 @@ figcaption p {
     height: 100%;
     object-fit: cover;
     width: 100%;
-  }
-}
-
-@include larger-than(xsmall) {
-  .pswp-gallery .figure-box {
-    padding-bottom: 37.5%;
-    width: 50%;
-  }
-}
-
-@include larger-than(small) {
-  .pswp-gallery .figure-box {
-    padding-bottom: 25%;
-    width: 33.3%;
-  }
-}
-
-@include larger-than(xlarge) {
-  .pswp-gallery .figure-box {
-    padding-bottom: 15%;
-    width: 20%;
-  }
-}
-
-.pswp {
-  .pswp__caption__center {
-    text-align: center;
   }
 }

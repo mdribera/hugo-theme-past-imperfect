@@ -1,0 +1,33 @@
+{{ $svgPath := print .Site.Params.faviconPath (print "favicon.svg") }}
+{{ if fileExists (print "static" (print $svgPath)) -}}
+<link rel="icon" type="image/svg+xml" sizes="any" href="{{ $svgPath }}">
+{{- end }}
+{{ $icon32Path := print .Site.Params.faviconPath (print "favicon-32x32.png") }}
+{{ if fileExists (print "static" (print $icon32Path)) -}}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ $icon32Path }}">
+{{- end }}
+{{ $icon16Path := print .Site.Params.faviconPath (print "favicon-16x16.png") }}
+{{ if fileExists (print "static" (print $icon16Path)) -}}
+<link rel="icon" type="image/png" sizes="16x16" href="{{ $icon16Path }}">
+{{- end }}
+
+{{ $appleTouchPath := print .Site.Params.faviconPath (print "apple-touch-icon.png") }}
+{{ if fileExists (print "static" (print $appleTouchPath)) -}}
+<link rel="apple-touch-icon" sizes="180x180" href="{{ $appleTouchPath }}">
+{{- end }}
+{{ $pinnedTabPath := print .Site.Params.faviconPath (print "safari-pinned-tab.svg") }}
+{{ if fileExists (print "static" (print $pinnedTabPath)) -}}
+{{ with .Site.Params.themeFg }}
+<link rel="mask-icon" href="{{ $pinnedTabPath }}" color="{{ . }}">
+{{ end }}
+{{- end }}
+
+{{ with .Site.Params.themeBg }}
+<meta name="theme-color" content="{{ . }}">
+<meta name="msapplication-TileColor" content="{{ . }}">
+{{ end }}
+
+{{ $browserConfigPath := print .Site.Params.faviconPath (print "browserconfig.xml") }}
+{{ if fileExists (print "static" (print $browserConfigPath)) -}}
+<meta name="msapplication-config" content="{{ $browserConfigPath }}">
+{{- end }}

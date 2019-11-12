@@ -1,5 +1,7 @@
 .figure-box,
 .video {
+  float: left;
+  //padding: .5rem $gutter-xsmall 1rem $gutter-xsmall;
   padding-bottom: 1rem;
   padding-top: .5rem;
   text-align: right;
@@ -19,38 +21,52 @@
   }
 
   &.half {
-    max-width: 50%;
+    @include between(xsmall, medium) {
+      width: calc(50% - #{$gutter-xsmall});
+    }
 
-    @include respond-to(xxsmall) {
-      max-width: 100%;
+    @include larger-than(large) {
+      width: calc(50% - #{$gutter-xsmall});
     }
   }
 
   &.third {
-    max-width: 33%;
+    &:not(:nth-child(3n-2)) {
+      @include between(xxsmall, xsmall) {
+        width: 50%;
+      }
 
-    @include respond-to(xxsmall) {
-      max-width: 50%;
+      @include between(medium, large) {
+        width: 50%;
+      }
+    }
+
+    @include between(xsmall, medium) {
+      width: 33.3%;
+    }
+
+    @include between(large, xlarge) {
+      width: 33.3%;
+    }
+
+    @include larger-than(xlarge) {
+      width: 20%;
     }
   }
 
   &.fourth {
-    max-width: 25%;
-
-    @include respond-to(xxsmall) {
-      max-width: 50%;
-    }
+    width: 25%;
   }
 
-  @include larger-than(xxsmall) {
+  @include larger-than(xsmall) {
     &.inline-left {
       float: left;
-      padding-right: 1.5rem;
+      padding-right: $gutter-xsmall;
     }
 
     &.inline-right {
       float: right;
-      padding-left: 1.5rem;
+      padding-left: $gutter-xsmall;
     }
   }
 
@@ -62,6 +78,25 @@
     clear: both;
     display: block;
     margin: auto;
+  }
+}
+
+.figure-box {
+  border: 0;
+  display: inline-block;
+  width: 100%;
+
+  figcaption {
+    border-top: 1px solid $color-gray-30;
+    color: $color-dark-gray;
+    display: inline-block;
+    font-size: .8rem;
+  }
+
+  img,
+  svg {
+    display: block;
+    width: 100%;
   }
 }
 
@@ -86,32 +121,5 @@
 
   &.half {
     padding-bottom: 28.13%;
-  }
-
-  &.third {
-    padding-bottom: 18.75%;
-  }
-
-  &.fourth {
-    padding-bottom: 14%;
-  }
-}
-
-.figure-box {
-  border: 0;
-  display: inline-block;
-  width: 100%;
-
-  figcaption {
-    border-top: 1px solid $color-gray-30;
-    color: $color-dark-gray;
-    display: inline-block;
-    font-size: .8rem;
-  }
-
-  img,
-  svg {
-    display: block;
-    max-width: 100%;
   }
 }

@@ -73,7 +73,7 @@ body {
   }
 }
 
-@include respond-to(medium) {
+@include smaller-than(medium) {
   .page-wrapper {
     padding: $gutter-small $gutter-small 0;
   }
@@ -92,7 +92,7 @@ body {
   }
 }
 
-@include respond-to(xsmall) {
+@include smaller-than(xsmall) {
   .page-wrapper {
     padding: .2rem .2rem 0;
   }

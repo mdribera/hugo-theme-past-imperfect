@@ -6,7 +6,7 @@
 {{ $original := .Page.Resources.GetMatch (.Get "src") }}
 
 {{ if $original }}
-<div class='figure-box{{ with .Get "class" }} {{ . }}{{ end }}'>
+<div class='figure-box{{ with (default "third" (.Get "class")) }} {{ . }}{{ end }}'>
     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         {{ if eq $pswp true }}
         {{ $thumbSrc := ($original.Resize "600x").RelPermalink }}

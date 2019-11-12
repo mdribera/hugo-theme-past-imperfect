@@ -123,7 +123,7 @@
   }
 }
 
-@include respond-to(medium) {
+@include smaller-than(medium) {
   .page-sidebar {
     grid-template-areas: 'logo . title title' '.  . nav links';
     grid-template-columns: ($gutter-large * 2) $gutter-small 1fr 1fr;
@@ -165,7 +165,7 @@
   }
 }
 
-@include respond-to(small) {
+@include smaller-than(small) {
   .page-sidebar {
     grid-template-areas: 'title' 'links' 'nav';
     grid-template-columns: auto;
