@@ -14,8 +14,7 @@ const loaders = {
   postcss: {
     loader: 'postcss-loader',
     options: {
-      ident: 'postcss',
-      plugins: (loader) => [require('autoprefixer')({ grid: true })],
+      postcssOptions: { plugins: (loader) => [require('autoprefixer')({ grid: true })], },
       sourceMap: true,
     },
   },
