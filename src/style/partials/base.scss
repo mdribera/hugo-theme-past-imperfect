@@ -109,8 +109,8 @@ input,
 select,
 textarea {
   font-family: $font-sans-pro;
-  font-size: 12pt;
-  font-weight: 400;
+  font-size: 13pt;
+  font-weight: 500;
   line-height: 1.75;
 }
 
@@ -132,7 +132,7 @@ h6 {
   color: $color-text;
   font-family: $font-raleway;
   font-weight: 800;
-  letter-spacing: .25rem;
+  letter-spacing: .2rem;
   line-height: 1.65;
   margin: 0 0 1rem;
   text-transform: uppercase;
@@ -148,13 +148,13 @@ h2 {
 }
 
 h3 {
-  font-size: .9rem;
+  font-size: 1rem;
 }
 
 h4,
 h5,
 h6 {
-  font-size: .7rem;
+  font-size: .9rem;
 }
 
 p {
@@ -173,7 +173,7 @@ header {
 
   p {
     font-family: $font-raleway;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: .15rem;
   }
 }
@@ -381,19 +381,23 @@ table {
         }
       }
 
-      &:first-child td {
-        border-top-width: 1px;
+      &:first-child {
+        td {
+          border-top-width: 1px;
+        }
       }
     }
   }
 
-  tbody tr {
-    border: solid 1px $color-gray-30;
-    border-left: 0;
-    border-right: 0;
+  tbody {
+    tr {
+      border: solid 1px $color-gray-30;
+      border-left: 0;
+      border-right: 0;
 
-    &:nth-child(2n + 1) {
-      background-color: $color-gray-075;
+      &:nth-child(2n + 1) {
+        background-color: $color-gray-075;
+      }
     }
   }
 }
@@ -509,7 +513,7 @@ textarea {
     cursor: pointer;
     display: inline-block;
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 500;
     padding-left: 2.4rem;
     padding-right: .75rem;
     position: relative;
@@ -534,19 +538,25 @@ textarea {
     }
   }
 
-  &:checked + label::before {
-    background: $color-text;
-    border-color: $color-text;
-    color: $color-white;
-    content: '\f00c';
+  &:checked + label {
+    &::before {
+      background: $color-text;
+      border-color: $color-text;
+      color: $color-white;
+      content: '\f00c';
+    }
   }
 
-  &:focus + label::before {
-    border-color: $color-primary;
-    box-shadow: 0 0 0 1px $color-primary;
+  &:focus + label {
+    &::before {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 1px $color-primary;
+    }
   }
 }
 
-[type='radio'] + label::before {
-  border-radius: 100%;
+[type='radio'] + label {
+  &::before {
+    border-radius: 100%;
+  }
 }

@@ -5,12 +5,14 @@ figure {
   position: relative;
 }
 
-figcaption p {
-  margin: auto;
+figcaption {
+  p {
+    margin: auto;
+  }
 }
 
 .pswp {
-  .pswp__caption__center {
+  .pswp__caption__center { // sass-lint:disable-line class-name-format
     text-align: center;
   }
 }
@@ -30,13 +32,13 @@ figcaption p {
 
     &.half {
       @include between(xsmall, medium) {
-        width: 50%;
         padding-bottom: 37.5%;
+        width: 50%;
       }
 
       @include larger-than(large) {
-        width: 50%;
         padding-bottom: 37.5%;
+        width: 50%;
       }
     }
 
@@ -89,9 +91,11 @@ figcaption p {
       height: 100%;
     }
 
-    &:hover figcaption {
-      bottom: 0;
-      opacity: 1;
+    &:hover {
+      figcaption {
+        bottom: 0;
+        opacity: 1;
+      }
     }
   }
 

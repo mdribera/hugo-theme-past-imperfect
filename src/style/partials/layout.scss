@@ -33,6 +33,11 @@ body {
 .page-main {
   margin-left: $sidebar-width + $gutter-large;
   min-height: calc(100vh - #{$gutter-large * 2});
+
+  .page-main-title {
+    font-size: 2em;
+    text-decoration: underline;
+  }
 }
 
 .page-footer {
@@ -47,14 +52,14 @@ body {
     color: $color-medium-gray;
     font-family: $font-raleway;
     font-size: .5rem;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: .25rem;
     margin: 0;
     text-transform: uppercase;
   }
 }
 
-#back-to-top {
+#back-to-top { // sass-lint:disable-line no-ids
   background-color: $color-white;
   bottom: -5px;
   color: $color-medium-gray;
@@ -73,7 +78,7 @@ body {
   }
 }
 
-@include smaller-than(medium) {
+@include smaller-than(large) {
   .page-wrapper {
     padding: $gutter-small $gutter-small 0;
   }

@@ -2,32 +2,8 @@
     {{ $original := .Resources.GetMatch "banner.*" }}
 
     {{ if $original }}
-    <div class="banner">
-        {{ $srcset := "" }}
-
-        {{ $sizes := slice 320 480 768 1024 1280 1600 1920 }}
-        {{ range $sizes }}
-            {{ if gt $original.Width . }}
-                {{ $newSize := printf "%sx" (string .) }}
-                {{ $newLink := ($original.Resize $newSize).RelPermalink }}
-                {{ $newWidth := printf " %sw, " (string .) }}
-                {{ $srcset = print $srcset (print $newLink (print $newWidth)) }}
-            {{ end }}
-        {{ end }}
-
-        {{ $originalLink := printf "%s" $original.RelPermalink }}
-        {{ $originalWidth := printf " %sw" (string $original.Width) }}
-
-        {{ $srcset = print $srcset (print $originalLink (print $originalWidth)) }}
-
-        {{ $mediaQuery := "(min-width: 980px) calc(100vw - 28rem), 100vw" }}
-        {{ if eq ($.Scratch.Get "list") "true" }}
-            {{ $mediaQuery = "(min-width: 1280px) calc((100vw - 28em) / 2), (min-width: 980px) calc(100vw - 28em), (min-width: 768px) calc(100vw / 2), 100vw" }}
-        {{ end }}
-        <img src="{{ $original.RelPermalink }}"
-             {{ if gt (len $srcset) 0 }}srcset="{{ printf $srcset }}"
-             sizes="{{ $mediaQuery }}"{{ end }}
-             {{ with .Title }}alt="{{ . }}"{{ end }}>
+    {{ $bannerImage := $original.Resize "900x" }}
+    <div class="banner" style="background-image: url({{ $bannerImage.RelPermalink }}">
     </div>
     {{ else }}
     <div class="banner no-image"></div>

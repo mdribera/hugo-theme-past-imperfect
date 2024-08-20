@@ -135,7 +135,7 @@
   p {
     font-family: $font-raleway;
     font-size: .6rem;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: .25rem;
     margin-bottom: 0;
     text-decoration: none;
@@ -161,24 +161,36 @@
     width: 4rem;
   }
 
-  .icons li {
-    padding-right: .5rem;
+  .icons {
+    li {
+      padding-right: .5rem;
+    }
   }
 }
 
-.social-share-nav .share-btn h3 {
-  color: $color-white;
+.social-share-nav {
+  .share-btn {
+    h3 {
+      color: $color-white;
+    }
+  }
 }
 
 @include smaller-than(small) {
-  .icons li>::before,
-  .site-links li>::before {
-    font-size: 1.6rem;
+  .icons,
+  .site-links {
+    li {
+      > ::before {
+        font-size: 1.6rem;
+      }
+    }
   }
 }
 
 @include smaller-than(xsmall) {
-  .social-share .share-btn {
-    width: 3rem;
+  .social-share {
+    .share-btn {
+      width: 3rem;
+    }
   }
 }

@@ -1,6 +1,11 @@
+// import font awesome
+$fa-font-path: '~font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome';
+
 @import 'partials/base';
 @import 'partials/layout';
 
+@import 'partials/home';
 @import 'partials/social';
 @import 'partials/button';
 @import 'partials/image';

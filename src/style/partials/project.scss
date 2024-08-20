@@ -1,29 +1,26 @@
 @import '../globals';
 
 .project-list {
-  .project-gutter-sizer {
-    width: 1rem;
-  }
+  margin: 0 auto;
+  max-width: 70rem;
 
   .project-content {
     flex-grow: 1;
   }
 
   .project {
+    @include larger-than(medium) {
+      grid-template-areas: 'header content content' 'header . footer';
+      grid-template-columns: 32rem 1fr auto;
+      grid-template-rows: 1fr auto;
+    }
+
+    display: grid;
+    grid-template-areas: 'header' 'content' 'footer';
+    grid-template-columns: 1fr;
+    grid-template-rows: 18rem 1fr auto;
     margin-bottom: 1rem;
     width: 100%;
-
-    @include larger-than(small) {
-      width: calc(50% - .5rem);
-    }
-
-    @include larger-than(medium) {
-      width: 100%;
-    }
-
-    @include larger-than(large) {
-      width: calc(50% - .5rem);
-    }
 
     &:last-child {
       margin-bottom: 0;
@@ -32,15 +29,16 @@
 }
 
 .project {
+  @include larger-than(medium) {
+    padding: $gutter-large;
+  }
+
   background: $color-white;
   border: solid 1px $color-gray-30;
   border-radius: $border-radius;
   max-width: 100%;
+  overflow: hidden;
   padding: $gutter-small;
-
-  @include larger-than(medium) {
-    padding: $gutter-large;
-  }
 
   h2 {
     background-image: linear-gradient(to right, $color-secondary, $color-secondary);
@@ -87,18 +85,18 @@
 }
 
 .project-header {
+  @include larger-than(medium) {
+    margin: calc(-#{$gutter-large} - 1px) $gutter-large calc(-#{$gutter-large} - 1px) calc(-#{$gutter-large} - 1px);
+  }
+
   background: $color-black;
-  border-top-left-radius: $border-radius;
-  border-top-right-radius: $border-radius;
   display: flex;
   flex-direction: column;
+  grid-area: header;
   margin: calc(-#{$gutter-small} - 1px) calc(-#{$gutter-small} - 1px) $gutter-small;
   overflow: hidden;
   position: relative;
 
-  @include larger-than(medium) {
-    margin: calc(-#{$gutter-large} - 1px) calc(-#{$gutter-large} - 1px) 2rem;
-  }
 
   .title,
   .meta {
@@ -107,18 +105,19 @@
     z-index: $z-base + 1;
 
     p,
-    span {
+    span,
+    time {
       @include soften-text(87);
     }
   }
 
   .title {
-    flex-grow: 1;
-    text-align: center;
-
     @include larger-than(medium) {
       padding: $gutter-large $gutter-large $gutter-small;
     }
+
+    flex-grow: 1;
+    text-align: center;
 
     h1 {
       font-size: 1.5rem;
@@ -126,12 +125,14 @@
       line-height: 1;
     }
 
-    a:hover {
-      color: inherit;
+    a {
+      &:hover {
+        color: inherit;
+      }
     }
 
     p {
-      font-size: .7rem;
+      font-size: .9rem;
     }
 
     > :last-child {
@@ -153,12 +154,12 @@
     white-space: nowrap;
     width: 100%;
 
-    @include larger-than(medium) {
-      padding: 0 $gutter-large $gutter-large;
-    }
-
     &.abbreviated {
       display: flex;
+    }
+
+    @include larger-than(medium) {
+      padding: 0 $gutter-large $gutter-large;
     }
 
     @include larger-than(xxsmall) {
@@ -176,28 +177,24 @@
 
     .reading-time {
       border-left: solid 1px $color-white-87;
-      margin-left: $gutter-small;
       padding-left: $gutter-small;
       text-align: left;
     }
 
     .published {
+      margin-right: $gutter-small;
       text-align: right;
     }
-
   }
 
   .banner {
-    align-items: center;
-    display: flex;
+    background-position: center;
+    background-size: cover;
     height: 100%;
-    justify-content: center;
-    overflow: hidden;
     position: absolute;
     width: 100%;
 
-    img {
-      flex-shrink: 0;
+    svg {
       width: 100%;
     }
 
@@ -209,6 +206,7 @@
 
 .project-footer {
   display: flex;
+  grid-area: footer;
   margin-top: 2rem;
 
   .actions {
@@ -217,10 +215,18 @@
 }
 
 .project-content {
+  grid-area: content;
+
   img,
   video,
   iframe {
     max-width: 100%;
+  }
+
+  h3,
+  h4,
+  h5 {
+    font-weight: 600;
   }
 
   p,
@@ -243,6 +249,21 @@
 
   .clear {
     clear: both;
+  }
+}
+
+.table-of-contents {
+  margin-bottom: $gutter-large;
+
+  ul {
+    margin-bottom: 0;
+  }
+}
+
+.content-single {
+  .project {
+    margin: 0 auto;
+    max-width: 70rem;
   }
 }
 

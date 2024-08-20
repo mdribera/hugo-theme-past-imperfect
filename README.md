@@ -100,6 +100,5 @@ I simplified Future Imperfect's design in order to better share projects and rew
 
 - [Font Awesome](https://github.com/FortAwesome/Font-Awesome)
 - [Hugo Easy Gallery](https://github.com/liwenyip/hugo-easy-gallery) which uses [PhotoSwipe](https://github.com/dimsemenov/photoswipe).
-- [Masonry](https://github.com/desandro/masonry)
 
 

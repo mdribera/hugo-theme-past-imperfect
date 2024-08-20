@@ -20,8 +20,7 @@ features = [
     "scss",
     "sass",
     "font awesome",
-    "photoswipe",
-    "masonry"
+    "photoswipe"
 ]
 min_version = 0.43
 

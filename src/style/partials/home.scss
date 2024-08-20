@@ -1,0 +1,46 @@
+@import '../globals';
+
+.featured-projects-title {
+  border-bottom: 2px solid $color-secondary;
+  margin: $gutter-large auto;
+  text-align: center;
+  width: 60%;
+}
+
+.home-page-intro {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto $gutter-large;
+  width: 100%;
+
+  @include larger-than(small) {
+    width: 60%;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    text-transform: initial;
+  }
+
+  p,
+  ol,
+  ul {
+    display: inline-block;
+    margin: 0 auto $gutter-small;
+    padding: 0 $gutter-large;
+    text-align: left;
+  }
+}
+
+.all-projects-button {
+  text-align: center;
+}
+
+@include larger-than(large) {
+  .featured-projects-title,
+  .home-page-intro {
+    margin: $gutter-large auto;
+    width: 60%;
+  }
+}
