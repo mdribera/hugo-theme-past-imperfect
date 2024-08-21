@@ -131,10 +131,6 @@
       }
     }
 
-    p {
-      font-size: .9rem;
-    }
-
     > :last-child {
       margin-bottom: 0;
     }
@@ -144,7 +140,7 @@
     display: none;
     flex-direction: row;
     font-family: $font-raleway;
-    font-size: .7rem;
+    font-size: 1rem;
     font-weight: 800;
     justify-content: center;
     letter-spacing: .25rem;
