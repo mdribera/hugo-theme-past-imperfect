@@ -2,7 +2,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 const loaders = {
@@ -12,9 +12,7 @@ const loaders = {
   postcss: {
     loader: 'postcss-loader',
     options: {
-      plugins: (loader) => [
-        require('autoprefixer'),
-      ],
+      postcssOptions: { plugins: (loader) => [require('autoprefixer')({ grid: true })], },
     },
   },
   sass: {
@@ -22,7 +20,7 @@ const loaders = {
   },
 };
 
-module.exports = merge.smart(common, {
+module.exports = merge(common, {
   mode: 'production',
 
   optimization: {
