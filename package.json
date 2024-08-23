@@ -5,8 +5,8 @@
   "main": "src/js/index.js",
   "scripts": {
     "lint": "eslint src && sass-lint -c .sass-lint.yml 'src/**/*.scss' -v -q",
-    "start": "webpack --config webpack.dev.js --watch",
-    "build": "webpack --config webpack.prod.js"
+    "start": "webpack --mode=development --watch",
+    "build": "webpack --mode=production"
   },
   "repository": {
     "type": "git",

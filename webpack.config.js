@@ -2,26 +2,30 @@ const path = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+
+const devMode = process.env.NODE_ENV !== 'production';
 
 const srcPath = path.resolve(__dirname, 'src');
 const loaders = {
   css: {
     loader: 'css-loader',
     options: {
-      sourceMap: true,
+      sourceMap: devMode,
     },
   },
   postcss: {
     loader: 'postcss-loader',
     options: {
       postcssOptions: { plugins: (loader) => [require('autoprefixer')({ grid: true })], },
-      sourceMap: true,
+      sourceMap: devMode,
     },
   },
   sass: {
     loader: 'sass-loader',
     options: {
-      sourceMap: true,
+      sourceMap: devMode,
     },
   },
 };
@@ -35,7 +39,15 @@ module.exports = {
     photoswipe: path.resolve(srcPath, 'js/init-photoswipe.js'),
   },
 
-  devtool: 'source-map',
+  devtool: devMode ? 'eval-source-map' : false,
+
+  optimization: {
+    minimize: devMode,
+    minimizer: [
+      new TerserPlugin(),
+      new CssMinimizerPlugin(),
+    ],
+  },
 
   module: {
     rules: [
@@ -88,6 +100,6 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'static'),
-    publicPath: '/static',
+    publicPath: '/',
   },
 };
