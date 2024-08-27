@@ -71,20 +71,9 @@ module.exports = {
         ],
       },
       {
-        test: /\.(gif|png)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-        },
-      },
-      {
-        test: /\.(svg|eot|ttf|otf|woff2?)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          publicPath: '/',
-          outputPath: './',
-        },
+        test: /\.(gif|png|svg|eot|ttf|otf|woff2?)$/,
+        type: 'asset/resource',
+        dependency: { not: ['url'] },
       },
     ],
   },
